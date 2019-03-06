@@ -12,22 +12,25 @@
 
 
 def top_k_words(string1, k):
-    word_list =[]
+    word_list = []
     tmp_word = ""
-    for ch in string1:
-        if ch == " ":
+    for i in range(len(string1)):
+        if string1[i] == " ":
             word_list.append(tmp_word)
             tmp_word = ""
+        elif i == len(string1)-1:
+            tmp_word += string1[i]
+            word_list.append(tmp_word)
         else:
-            tmp_word += ch
-
+            tmp_word += string1[i]
     word_dict = {}
     for word in word_list:
         if word in word_dict.keys():
             word_dict[word] += 1
         else:
             word_dict[word] = 1
-    sorted_by_value = sorted(word_dict.items(), key=lambda x:x[1], reverse=True)
+    sorted_by_value = sorted(
+        word_dict.items(), key=lambda x: x[1], reverse=True)
     output_list = []
     for i in range(k):
         if i < len(word_dict.keys()):
@@ -35,11 +38,8 @@ def top_k_words(string1, k):
     return output_list
 
 
-
-
 string1 = 'foo bar baz bar baz bar'
-k=4
+string2 = "dog dog cat cat cat hi test test one a"
+k = 4
 
-print(top_k_words(string1, k))
-
-
+print(top_k_words(string2, k))

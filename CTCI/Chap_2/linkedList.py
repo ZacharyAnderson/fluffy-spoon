@@ -74,6 +74,9 @@ class SinglyLinkedList:
             curr = curr.next
 
     def length(self):
+        """
+            Helper function that returns length of list
+        """
         curr = self.root
         length_count = 0
         while curr:
@@ -82,6 +85,10 @@ class SinglyLinkedList:
         return length_count
 
     def return_kth_to_last_node(self, k):
+        """
+            Returns the Kth to last node, where K
+            is an integer received as input
+        """
         length = self.length()
         node_to_return = length - k
         if k > length or k < 1:
@@ -91,6 +98,23 @@ class SinglyLinkedList:
             curr = curr.next
         return curr
 
+    def delete_middle_node(self, node_to_delete):
+        """
+            deletes a node not necessarily in the middle,
+            but the node cannot be the first or last node.
+            Function will delete first occurence of node.
+            Input - node to be deleted
+            Output - None
+        """
+        curr = self.root
+        prev = None
+        while curr:
+            if curr.data == node_to_delete and prev is not None and curr.next:
+                prev.next = curr.next
+                curr = curr.next
+            prev = curr
+            curr = curr.next
+
 
 if __name__ == "__main__":
     lst = SinglyLinkedList()
@@ -98,5 +122,7 @@ if __name__ == "__main__":
     lst.insert("text")
     lst.insert("test")
     lst.insert("test")
+    lst.insert("yup")
     print(lst)
-    print(lst.return_kth_to_last_node(4))
+    lst.delete_middle_node("yup")
+    print(lst)

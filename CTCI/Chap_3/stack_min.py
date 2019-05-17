@@ -18,7 +18,9 @@ class MinStack:
             self.min.pop()
 
     def min_val(self):
-        return self.min[-1]
+        if self.min:
+            return self.min[-1]
+        return 0
 
 
 if __name__ == "__main__":

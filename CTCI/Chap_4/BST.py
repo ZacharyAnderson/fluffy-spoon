@@ -1,11 +1,12 @@
 class BST_Node:
-    def __init__(self, value):
+    def __init__(self, value, left_child=None, right_child=None):
         self.value = value
-        self.left_child = None
-        self.right_child = None
+        self.left_child = left_child
+        self.right_child = right_child
 
     def __repr__(self):
-        return repr(self.value)
+        return repr(str(self.value) + str(self.left_child)
+                    + str(self.right_child))
 
     def insert(self, value):
         if self.value:

@@ -41,4 +41,8 @@ if __name__ == "__main__":
     test = BST_Node(10)
     test.insert(11)
     test.insert(9)
+    test.insert(12)
+    test.insert(13)
+    test.insert(14)
+    test.insert(8)
     print(list_of_depths(test, 0))

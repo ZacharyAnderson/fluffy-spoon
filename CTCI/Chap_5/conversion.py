@@ -6,9 +6,8 @@ def conversion(integer1, integer2):
     bit_difference = integer1 ^ integer2
     count = 0
     while bit_difference:
-        print(bin(bit_difference))
-        bit_difference ^= bit_difference & -bit_difference
         count += 1
+        bit_difference &= bit_difference - 1
     return count
 
 

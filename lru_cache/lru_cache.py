@@ -6,10 +6,14 @@ class LRUCache:
         self.cache_list = list()
         self.max_capacity = capacity
 
-    def get(self, key: int) -> int:
-        if key in self.cache:
+    def _update_list(self, key: int):
+        if self.cache_list[-1] != key:
             self.cache_list.remove(key)
             self.cache_list.append(key)
+
+    def get(self, key: int) -> int:
+        if key in self.cache:
+            self._update_list(key)
             return self.cache[key]
         else:
             return -1
@@ -20,8 +24,7 @@ class LRUCache:
             self.cache.pop(id_to_remove)
         elif key in self.cache:
             self.cache[key] = value
-            self.cache_list.remove(key)
-            self.cache_list.append(key)
+            self._update_list(key)
         self.cache[key] = value
         self.cache_list.append(key)
 

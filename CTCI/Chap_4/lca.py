@@ -26,4 +26,4 @@ if __name__ == "__main__":
     test.insert(9)
     test.insert(11)
     test.insert(13)
-    print(lowest_common_ancestor(test, 11, 12))
+    print(lowest_common_ancestor(test, 8, 12))

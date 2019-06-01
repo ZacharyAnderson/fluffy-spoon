@@ -41,5 +41,6 @@ if __name__ == "__main__":
     stack.push(5)
     print(stack)
     stack.push(6)
+    stack.push(3)
     print(stack)
     print(sort_stack(stack))
